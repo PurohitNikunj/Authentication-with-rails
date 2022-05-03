@@ -1,0 +1,4 @@
+<%= @user.username %>
+<%= @user.password_digest %>
+<br>
+<%= link_to "Logout", logout_path, data: {turbo_method: :delete} %>
