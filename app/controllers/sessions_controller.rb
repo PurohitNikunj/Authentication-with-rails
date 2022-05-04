@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+    auto_session_timeout_actions
+    
     # initialise new session
     def new
     end
@@ -8,7 +9,8 @@ class SessionsController < ApplicationController
     def create
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
-            remember(user)
+            session = user.sessions.new()
+            remember(session)
             redirect_to show_path
         else
             flash[:error] = "Invalid Username OR password!!"
@@ -16,9 +18,16 @@ class SessionsController < ApplicationController
         end
     end
 
-    # logout 
+    # logout from current device
     def destroy
         logout
         redirect_to login_path, status: :see_other
     end
+
+    # logout from all devices
+    def destroyall
+        logoutall
+        redirect_to login_path, status: :see_other
+    end
+
 end
