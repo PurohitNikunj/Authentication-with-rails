@@ -8,10 +8,8 @@ Rails.application.routes.draw do
   get '/show/', to: "users#show", as: "show"
   get '/index/', to: "users#index", as: "index"
 
-  #Log-in & Log-out user
-  get '/login', to: "sessions#new"
-  post '/login', to: "sessions#create"
-  delete '/logout', to: "sessions#destroy"
-  delete '/logoutall', to: "sessions#destroyall"
+  #Log-in user with JWT
+  get '/login', to: "token_authentications#login"
+  post '/login', to: "token_authentications#post_login"
 
 end

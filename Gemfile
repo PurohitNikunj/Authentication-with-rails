@@ -75,4 +75,6 @@ gem "bcrypt", "~> 3.1"
 
 gem "pry", "~> 0.14.1"
 
-gem "auto-session-timeout", "~> 0.9.9"
+# gem "auto-session-timeout", "~> 0.9.9"
+
+gem "jwt", "~> 2.3"
